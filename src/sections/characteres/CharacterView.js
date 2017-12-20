@@ -61,7 +61,7 @@ const mapDispatchToProps = (dispatch, props) => {
             console.log('ViewCharacterSeries me lanza el click   - character', character)
 
             character && dispatch(SeriesActions.fetchSeriesList(character))
-            Actions.SeriesList({ title: character.name })
+            Actions.SeriesList({ title: 'Series de ' + character.name })
 
       
         },

@@ -1,24 +1,24 @@
-import * as types from '../types/characters'
+import * as types from '../types/series'
 import { fetch } from '../../webservices/werbservices'
 import { Actions } from 'react-native-router-flux'
 
 function updateSeriesList(value) { 
     return {
-        type: types.CHARACTERS_UPDATE_LIST,
+        type: types.SERIES_UPDATE_LIST,
         value: value
     }
 }
 
 function setSeriesFetching(value) {
     return {
-        type: types.CHARACTERS_SET_FETCHING,
+        type: types.SERIES_SET_FETCHING,
         value: value
     }
 }
 
 export function updateSeriesSelected(serie) {
     return {
-        type: types.CHARACTERS_UPDATE_CHARACTER,
+        type: types.SERIES_UPDATE_SERIE,
         character: serie
     }
 }
@@ -30,6 +30,7 @@ export function fetchSeriesList(characters) {
     return (dispatch, getState) => {
 
         dispatch(setSeriesFetching(true))
+        dispatch(updateSeriesList([])) //para que se vacie y no vea lo anterior 
     
         const fetchUrl = '/series?characters=' + characters.id  //lista de Series de un personaje
         fetch( fetchUrl ).then(response => {

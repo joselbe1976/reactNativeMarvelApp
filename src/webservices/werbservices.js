@@ -11,8 +11,7 @@ export function configureAxios() {
 export function fetch(url) {
     return new Promise(function(resolve, reject) {
 
-        console.log('fetch del web service')
-
+       
         //A las URL de solicitidud añadimos siempre el API KEY Publica
         const urlFinal = url + '&apikey=' + constants.MARVEL_PUBLIC_API_KEY
 
@@ -24,6 +23,7 @@ export function fetch(url) {
                 reject( response )
 
         }).catch( error => {
+            console.log("error web service")
             reject( error )
         });
 

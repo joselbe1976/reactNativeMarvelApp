@@ -26,13 +26,14 @@ class SeriesList extends Component {
 
 
     render() {
+        console.log('render de Series List', this.props.list )
         return (
             <View>
 
             <FlatList 
                 data            = { this.props.list }
                 renderItem      = { ({item, index}) => this.renderItem(item, index) }
-                keyExtractor    = { (item, index) => item.id }
+                keyExtractor    = { (item, index) => item }
                 extraData       = { this.props }
             />
 
@@ -45,10 +46,9 @@ class SeriesList extends Component {
 
 
 const mapStateToProps = (state) => {
-
-    console.log('exec mapStateToProps', state)
+    console.log('mapStateToProps','state',state)
     return {
-        list        : state.characters.list,
+        list        : state.series.list,
         character   : state.characters.item,
     }
 }

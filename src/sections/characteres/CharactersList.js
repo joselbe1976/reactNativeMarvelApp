@@ -26,6 +26,7 @@ class CharactersList extends Component {
     }
 
     render() {
+        console.log('render de Characters List')
         return (
             <View>
 
