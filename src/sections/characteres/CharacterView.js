@@ -2,11 +2,12 @@ import React, { Component } from 'react'
 import { View, StyleSheet, Image, Text, Linking } from 'react-native'
 import { Button } from '../../widgets' 
 import { Colors } from '../../commons'
+import { Actions } from 'react-native-router-flux'
 
 // Redux
 import { connect } from  'react-redux'
 
-import * as CharactersActions from '../../redux/actions/characters'
+import * as SeriesActions from '../../redux/actions/series'
 
 
 class CharacterView extends Component {
@@ -47,13 +48,6 @@ class CharacterView extends Component {
     }
 }
 
-/*
-<Button label={'Ver series'} onPress={ () => this.onViewSeries(character) } isFetching={this.props.isFetching} />
-*/
-
-     
-
-
 
 const mapStateToProps = (state) => {
     return {
@@ -64,12 +58,12 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         ViewCharacterSeries: (character) => {
-            /*
-            if(character) {
-                dispatch(CharactersActions.deleteCharacter(character))
-            }
-            */
-          //  character && dispatch(CharactersActions.deleteCharacter(character))
+            console.log('ViewCharacterSeries me lanza el click   - character', character)
+
+            character && dispatch(SeriesActions.fetchSeriesList(character))
+            Actions.SeriesList({ title: character.name })
+
+      
         },
     }
 }

@@ -1,8 +1,8 @@
 import * as types from '../types/series'
 
 const initialState = {
-    isFetching: false,
-    list: [],
+    isFetching: false,  //si estan cargando las series
+    list: [],  //Lista de las series
     item: null, //por si quiero hacer un detalle de la serie seleccionada
 }
 
@@ -16,7 +16,7 @@ export default function reducer( state = initialState, action = {} ) {
                 list: action.value,
             };
 
-        case types.CHARACTERS_SET_FETCHING:
+        case types.SERIES_SET_FETCHING:
             return {
                 ...state,
                 isFetching: action.value,

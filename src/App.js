@@ -15,6 +15,7 @@ import { Colors } from './commons'
 /****************** Nuestros componentes *******************/
 import CharactersList from './sections/characteres/CharactersList'
 import CharacterView from './sections/characteres/CharacterView'
+import SeriesList from './sections/series/SeriesList'
 /************************************************/
 
 
@@ -63,6 +64,13 @@ export default class App extends Component {
          
                       />
                         
+                      <Scene
+                        key={ 'SeriesList' }
+                        component={ SeriesList }
+                        navigationBarStyle={styles.navBar}
+                        navBarButtonColor={'white'}
+         
+                      />
 
                     </Scene>
                 </Router>
