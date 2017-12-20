@@ -1,16 +1,22 @@
 import axios from 'axios'
 import * as constants from './constants'
 
+//Configura Axios, para todas las llamadas
 export function configureAxios() {
     axios.defaults.baseURL = constants.BASE_URL;
-    //axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
-    axios.defaults.headers.post['Content-Type'] = 'application/json';
+    axios.defaults.headers.common['Referer'] = constants.MARVEL_REFERER;
+    axios.defaults.headers.post['Content-Type'] = constants.BASE_CONTENT_TYPE;
 }
 
 export function fetch(url) {
     return new Promise(function(resolve, reject) {
 
-        axios.get(url).then( response => {
+        console.log('fetch del web service')
+
+        //A las URL de solicitidud añadimos siempre el API KEY Publica
+        const urlFinal = url + '&apikey=' + constants.MARVEL_PUBLIC_API_KEY
+
+        axios.get(urlFinal).then( response => {
 
             if(response.data)
                 resolve( response.data )
