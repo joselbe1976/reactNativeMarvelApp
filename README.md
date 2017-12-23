@@ -13,4 +13,4 @@ Se ha creado una app de personajes de marvel con la funcionalidad:
 
 Pantallas
 
-<img src="https://github.com/joselbe1976/reactNativeMarvelApp/blob/develop/screens/1-load.png" width="50"/>
+<img src="https://github.com/joselbe1976/reactNativeMarvelApp/blob/develop/screens/1-load.png" width="150"/>
