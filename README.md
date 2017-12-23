@@ -12,6 +12,8 @@ Se ha creado una app de personajes de marvel con la funcionalidad:
 
 Notas: Se ha añadido el spinner nativo indicado en la practica, aunque el proyecto para Android falla siguiendo los pasos de instalación.
 
+Fecha envio proyecto al profesor: 23/12/2017 12:15
+
 
 Pantallas IOS App:
 
