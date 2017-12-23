@@ -1,0 +1,5 @@
+export const BASE_URL = 'https://gateway.marvel.com/v1/public'
+export const BASE_CONTENT_TYPE = 'application/json'
+export const MARVEL_REFERER = 'http://joselbe.marvel.com'
+export const MARVEL_PUBLIC_API_KEY = '7fa07c081ce8bb0e40d5ea0a74150f88'
+export const GLOBAL_BASEURL_MARVEL = '/v1/public/'
