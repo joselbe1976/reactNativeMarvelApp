@@ -1,7 +1,10 @@
 import React, { Component } from 'react'
-import { FlatList, View, StyleSheet , Text, ActivityIndicator } from 'react-native'
+import { FlatList, View, StyleSheet , Text } from 'react-native'
 import { Colors } from '../../commons'
 import { Actions } from 'react-native-router-flux'
+
+//Native Spinner
+var Spinner = require('react-native-spinkit');
 
 
 // Importamos nuestra celda
@@ -26,12 +29,11 @@ class CharactersList extends Component {
     }
 
     renderFooter() {
-        return <ActivityIndicator
-            animating={this.props.isFetching}
-            size="large"
-            color="grey"
-            style={{ marginVertical: 20 }}
-        />
+      
+        return (<View style={styles.spinnerContaniner}>
+                    <Spinner  isVisible={this.props.isFetching} size={50} type={'Circle'} color={'white'}/>
+               </View>
+        )
     }
 
 
@@ -53,7 +55,6 @@ class CharactersList extends Component {
     }
 
 }
-
 
 
 const mapStateToProps = (state) => {
@@ -90,5 +91,12 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: Colors.background,
     },
+    
+    spinnerContaniner:{
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+
+    }
 
 })
