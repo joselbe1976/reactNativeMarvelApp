@@ -23,7 +23,7 @@ class CharacterView extends Component {
         
         //meto en variables los valores
         const image = character.thumbnail ? { uri: character.thumbnail.path + '/landscape_xlarge.' + character.thumbnail.extension } : require('../../resources/mark.png')
-        const description = character.description ? character.description : 'Personaje Marvel sin descripción'
+        const description = character.description ? character.description : 'No description'
 
         //validate the Wiki URL. Pillo la primera solo, hay varias en el api
         const urlWiki = character.urls? character.urls[0].url : null
@@ -38,11 +38,14 @@ class CharacterView extends Component {
                 </View>
 
                 <View style={styles.buttonContainer}>
-                    <Button label={'Ver Wiki'} onPress={ () => Linking.openURL(urlWiki) } isFetching={this.props.isFetching} />
+                    <Button label={'Show Wiki'} onPress={ () => Linking.openURL(urlWiki) } />
                 </View>
+
+
                 <View style={styles.buttonContainer}>
-                   <Button label={'Ver series ' + numSeries} onPress={ () => this.onViewSeries(character) } isFetching={this.props.isFetching} />
+                   <Button label={'Show series (' + numSeries + ')' } onPress={ () => this.onViewSeries(character) } isFetching={this.props.isFetching} />
                 </View>
+
             </View>
         )
     }
@@ -58,12 +61,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch, props) => {
     return {
         ViewCharacterSeries: (character) => {
-            console.log('ViewCharacterSeries me lanza el click   - character', character)
-
             character && dispatch(SeriesActions.fetchSeriesList(character))
-            Actions.SeriesList({ title: 'Series de ' + character.name })
-
-      
+            Actions.SeriesList({ title: 'Series of ' + character.name })
         },
     }
 }
@@ -86,8 +85,8 @@ const styles = StyleSheet.create({
     description: {
         flex: 1,
         fontSize: 18,
-        fontWeight: '600',
-        color: 'white',
+        fontWeight: 'bold',
+        color: Colors.textWhite,
     },
 
 

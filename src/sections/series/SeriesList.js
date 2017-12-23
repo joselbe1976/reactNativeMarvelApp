@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, StyleSheet , Text } from 'react-native'
+import { FlatList, View, StyleSheet , Text , ActivityIndicator} from 'react-native'
 import { Colors } from '../../commons'
 import { Actions } from 'react-native-router-flux'
 
@@ -15,38 +15,42 @@ class SeriesList extends Component {
 
 
     componentWillMount() {
-        console.log('componentWillMount', 'this.props',this.props)
-
         this.props.fetchSeriesList(this.props.character)
     }
 
     renderItem(item, index) {
+        console.log('item',item)
+        console.log('index',index)
         return <SeriesCell item={item}  />
     }
 
+    renderFooter() {
+        return <ActivityIndicator
+            animating={this.props.isFetching}
+            size="large"
+            color="grey"
+            style={{ marginVertical: 20 }}
+        />
+    }
 
     render() {
-        console.log('render de Series List', this.props.list )
+
         return (
-            <View>
-
-            <FlatList 
-                data            = { this.props.list }
-                renderItem      = { ({item, index}) => this.renderItem(item, index) }
-                keyExtractor    = { (item, index) => item }
-                extraData       = { this.props }
-            />
-
+            <View style={styles.container}>
+                <FlatList 
+                    data            = { this.props.list }
+                    renderItem      = { ({item, index}) => this.renderItem(item, index) }
+                    keyExtractor    = { (item, index) => item.id }
+                    extraData       = { this.props }
+                    ListFooterComponent={() => this.renderFooter()}
+                />
             </View>
         )
     }
 
 }
 
-
-
 const mapStateToProps = (state) => {
-    console.log('mapStateToProps','state',state)
     return {
         list        : state.series.list,
         character   : state.characters.item,
@@ -60,7 +64,6 @@ const mapDispatchToProps = (dispatch, props) => {
         }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SeriesList)
 

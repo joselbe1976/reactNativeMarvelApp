@@ -7,6 +7,8 @@
 import React, { Component } from 'react';
 import { View, StyleSheet, StatusBar, TouchableOpacity, Text } from 'react-native';
 
+
+
 import { Actions, Scene, Router } from 'react-native-router-flux';
 import * as webservices from './webservices/werbservices'
 
@@ -16,6 +18,7 @@ import { Colors } from './commons'
 import CharactersList from './sections/characteres/CharactersList'
 import CharacterView from './sections/characteres/CharacterView'
 import SeriesList from './sections/series/SeriesList'
+import CharacterNew from './sections/characteres/CharacterNew'
 /************************************************/
 
 
@@ -39,12 +42,25 @@ export default class App extends Component {
   componentWillMount() {
     webservices.configureAxios()
     StatusBar.setBarStyle('light-content') // iOS StatusBar light style
+
   }
+
+  // Render del boton de la barra navegacion
+  renderAddCharacterButton() {
+    return (
+        <TouchableOpacity style={styles.addButton} onPress={ () => Actions.CharacterNew() } >
+            <Text style={styles.addButtonText}>{'+'}</Text>
+        </TouchableOpacity>
+    )
+ }
 
   render() {
     console.disableYellowBox = true;
 
     return (
+
+
+
       <Provider store={store} >
                 <Router>
                     <Scene key="root">
@@ -54,14 +70,14 @@ export default class App extends Component {
                             component={ CharactersList }
                             navigationBarStyle={styles.navBar}
                             navBarButtonColor={'white'}
-                            title={'Personajes Marvel'}
+                            title={'Marvel'}
+                            renderRightButton={ () => this.renderAddCharacterButton() }
                         />
                         <Scene
                         key={ 'CharacterView' }
                         component={ CharacterView }
                         navigationBarStyle={styles.navBar}
                         navBarButtonColor={'white'}
-         
                       />
                         
                       <Scene
@@ -69,8 +85,15 @@ export default class App extends Component {
                         component={ SeriesList }
                         navigationBarStyle={styles.navBar}
                         navBarButtonColor={'white'}
-         
                       />
+
+                      <Scene
+                      key={ 'CharacterNew' }
+                      component={ CharacterNew }
+                      navigationBarStyle={styles.navBar}
+                      navBarButtonColor={'white'}
+                      title={'New Hero'}
+                  />
 
                     </Scene>
                 </Router>
@@ -99,4 +122,15 @@ const styles = StyleSheet.create({
   navBar: {
     backgroundColor: Colors.navBar,
   },
+  addButton: {
+    padding: 10,
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
+  addButtonText: {
+    color: 'white',
+    fontSize: 28,
+    fontWeight: '600',
+  }
 });

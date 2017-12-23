@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { View, TouchableOpacity, Image, Text, StyleSheet } from 'react-native'
 
+import { Colors } from '../../commons'
+
 export default class CharacterCell extends Component {
 
     static defaultProps = {
@@ -44,14 +46,14 @@ const styles = StyleSheet.create({
         bottom: 0,
         right: 0,
         left: 0,
-        backgroundColor: 'rgba(255,255,255,0.4)',
+        backgroundColor: Colors.backgroundTranparente,
     },
 
     name: {
         flex: 1,
         fontSize: 20,
         fontWeight: 'bold',
-        color: 'black',
+        color: Colors.textBlack,
     },
 
 })

@@ -43,7 +43,7 @@ const styles = StyleSheet.create({
         },
     
         error: {
-            color: 'white',
+            color: 'red',
             textAlign: 'right',
             marginTop: 4,
         },

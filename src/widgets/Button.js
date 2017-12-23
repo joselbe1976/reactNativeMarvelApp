@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { Colors } from '../commons'
 
 export default class Button extends Component {
 
@@ -35,13 +36,13 @@ const styles = StyleSheet.create({
             justifyContent: 'center',
             alignItems: 'center',
             padding: 10,
-            backgroundColor: 'grey',
-            borderRadius: 4,
+            backgroundColor: Colors.button_background,
+            borderRadius: 12,
             flexDirection: 'row',
         },
     
         label: {
-            color: 'white',
+            color: Colors.button_label_Color,
             fontWeight: '600',
             fontSize: 16,
         },

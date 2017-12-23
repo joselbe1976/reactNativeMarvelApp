@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { FlatList, View, StyleSheet , Text } from 'react-native'
+import { FlatList, View, StyleSheet , Text, ActivityIndicator } from 'react-native'
 import { Colors } from '../../commons'
 import { Actions } from 'react-native-router-flux'
 
@@ -25,20 +25,31 @@ class CharactersList extends Component {
         this.props.updateSelected(character)
     }
 
-    render() {
-        console.log('render de Characters List')
-        return (
-            <View>
+    renderFooter() {
+        return <ActivityIndicator
+            animating={this.props.isFetching}
+            size="large"
+            color="grey"
+            style={{ marginVertical: 20 }}
+        />
+    }
 
-            <FlatList 
-                data            = { this.props.list }
-                renderItem      = { ({item, index}) => this.renderItem(item, index) }
-                keyExtractor    = { (item, index) => index }
-                extraData       = { this.props }
-            />
+
+    render() {
+        return (
+            <View style={styles.container}>
+
+                <FlatList 
+                    data            = { this.props.list }
+                    renderItem      = { ({item, index}) => this.renderItem(item, index) }
+                    keyExtractor    = { (item, index) => index }
+                    extraData       = { this.props }
+                    ListFooterComponent={() => this.renderFooter()}
+                />
 
             </View>
         )
+        
     }
 
 }
@@ -47,7 +58,6 @@ class CharactersList extends Component {
 
 const mapStateToProps = (state) => {
 
-    console.log('exec mapStateToProps', state)
     return {
         list        : state.characters.list,
         character   : state.characters.item,
