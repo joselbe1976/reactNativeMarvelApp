@@ -10,7 +10,7 @@ Se ha creado una app de personajes de marvel con la funcionalidad:
         ** Acceso a las series que ha participado el personaje
     * Añadir nuevo personaje (sin conexion a web service)
 
-Notas: Se ha añadido el spinner nativo indicado en la practica, aunque el proyecto para Android falla siguiendo los pasos de instalación.
+Notas: Se ha añadido el spinner nativo indicado en la practica
 
 Fecha envio proyecto al profesor: 23/12/2017 12:15
 
